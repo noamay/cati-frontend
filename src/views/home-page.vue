@@ -11,7 +11,8 @@
       <input type="text" id="nickname" v-model="nickname" required>
 
       <label for="lastTimePooped">Last Time You Pooped:</label>
-      <input type="text" id="lastTimePooped" v-model="lastTimePooped" required>
+      <vue-date-picker id="lastTimePooped" v-model="lastTimePooped" required></vue-date-picker>
+
 
       <button type="submit">Join Game</button>
     </form>
@@ -19,6 +20,8 @@
 </template>
 
 <script>
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
 export default {
   data() {
     return {
@@ -37,7 +40,8 @@ export default {
       console.log('Nickname:', this.nickname);
       console.log('Last Time You Pooped:', this.lastTimePooped);
     }
-  }
+  },
+  components: { VueDatePicker  }
 };
 </script>
 
