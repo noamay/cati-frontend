@@ -22,6 +22,9 @@
 <script>
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
+import  store  from '../store/store.js';
+import router from "@/router";
+
 export default {
   data() {
     return {
@@ -39,6 +42,19 @@ export default {
       console.log('Session Code:', this.sessionCode);
       console.log('Nickname:', this.nickname);
       console.log('Last Time You Pooped:', this.lastTimePooped);
+      const formData = {
+        name: this.nickname,
+        last_poop: this.lastTimePooped,
+        session_id: this.sessionCode
+      }
+      store.dispatch('game/joinGame', formData)
+          .then(() => {
+            console.log(this.$store.state.game.gameData)
+            router.push({ name: 'about' })
+          })
+          .catch((error) => {
+            console.log(error)
+          })
     }
   },
   components: { VueDatePicker  }
