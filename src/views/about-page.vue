@@ -8,6 +8,7 @@
 </template>
 
 <script>
+
 export default {
   // You can add any additional logic or data properties here
 };

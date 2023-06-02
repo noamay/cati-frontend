@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link>
-      <br>
-      <router-link to="/about">About</router-link>
-    </nav>
     <router-view></router-view>
   </div>
 </template>
@@ -19,12 +14,17 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@500;700&display=swap');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000;
   margin-top: 60px;
+}
+h1 {
+  font-size: 42px;
+  font-weight: 700;
 }
 </style>

@@ -1,20 +1,21 @@
 
 <template>
   <div class="home">
-    <h1>Welcome to the Game</h1>
+    <h1>Join Session!</h1>
 
     <form @submit.prevent="joinGame">
-      <label for="sessionCode">Session Code:</label>
-      <input type="text" id="sessionCode" v-model="sessionCode" required>
+      <label for="sessionCode" class="InputLabel">Session Code</label>
+      <input type="text" id="sessionCode" v-model="sessionCode" class="TextInput" required>
 
-      <label for="nickname">Nickname:</label>
-      <input type="text" id="nickname" v-model="nickname" required>
+      <label for="nickname" class="InputLabel">Nickname</label>
+      <input type="text" id="nickname" v-model="nickname" required class="TextInput">
 
-      <label for="lastTimePooped">Last Time You Pooped:</label>
-      <vue-date-picker id="lastTimePooped" v-model="lastTimePooped" required></vue-date-picker>
+      <label for="lastTimePooped" class="InputLabel">Last Time You Pooped</label>
+      <vue-date-picker id="lastTimePooped" v-model="lastTimePooped" required time-picker
+      >
+      </vue-date-picker>
 
-
-      <button type="submit">Join Game</button>
+      <SuperButton type="submit" text="Join Game"></SuperButton>
     </form>
   </div>
 </template>
@@ -22,15 +23,16 @@
 <script>
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-import  store  from '../store/store.js';
-import router from "@/router";
+import  store  from '../../store/store.js';
+import router from "@/router/router";
+import SuperButton from "@/components/superButton.vue";
 
 export default {
   data() {
     return {
       sessionCode: '',
       nickname: '',
-      lastTimePooped: ''
+      lastTimePooped: new Date(),
     };
   },
   methods: {
@@ -57,7 +59,7 @@ export default {
           })
     }
   },
-  components: { VueDatePicker  }
+  components: {SuperButton, VueDatePicker  }
 };
 </script>
 
@@ -72,13 +74,19 @@ form {
   flex-direction: column;
   gap: 10px;
 }
-label {
-  font-weight: bold;
-}
 input[type="text"] {
   padding: 5px;
 }
 button {
+  margin: 20px;
   padding: 10px;
 }
+.InputLabel{
+  font-family: Bangers, Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  margin: 5px;
+}
+.TextInput{
+}
+
 </style>
