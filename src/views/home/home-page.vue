@@ -1,4 +1,3 @@
-
 <template>
   <div class="home">
     <h1>Join Session!</h1>
@@ -23,7 +22,7 @@
 <script>
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-import  store  from '../../store/store.js';
+import store from '../../store/store.js';
 import router from "@/router/router";
 import SuperButton from "@/components/superButton.vue";
 
@@ -41,6 +40,7 @@ export default {
       // You can access the entered values using `this.sessionCode`, `this.nickname`, `this.lastTimePooped`
 
       // Example: Log the entered values
+      console.log('Hopefully Connected')
       console.log('Session Code:', this.sessionCode);
       console.log('Nickname:', this.nickname);
       console.log('Last Time You Pooped:', this.lastTimePooped);
@@ -52,14 +52,15 @@ export default {
       store.dispatch('game/joinGame', formData)
           .then(() => {
             console.log(this.$store.state.game.gameData)
-            router.push({ name: 'about' })
+            // TODO - This is the correct point to start the webSocket connection - this.$webSocket.connect(URLFROMSTORE)
+            router.push({name: 'about'})
           })
           .catch((error) => {
             console.log(error)
           })
     }
   },
-  components: {SuperButton, VueDatePicker  }
+  components: {SuperButton, VueDatePicker}
 };
 </script>
 
@@ -69,24 +70,29 @@ export default {
   margin: 0 auto;
   padding: 20px;
 }
+
 form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 input[type="text"] {
   padding: 5px;
 }
+
 button {
   margin: 20px;
   padding: 10px;
 }
-.InputLabel{
+
+.InputLabel {
   font-family: Bangers, Helvetica, Arial, sans-serif;
   font-size: 28px;
   margin: 5px;
 }
-.TextInput{
+
+.TextInput {
 }
 
 </style>
